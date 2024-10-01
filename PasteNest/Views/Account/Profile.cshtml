@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+    var email = User.Claims.FirstOrDefault(c => c.Type == "Email")?.Value; 
+}
+
+<h2>Profile</h2>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Username</th>
+            <td>@User.Identity!.Name</td>
+        </tr>
+        <tr>
+            <th>Login</th>
+            <td>@email</td>
+        </tr>
+    </tbody>
+</table>
+
+<form asp-controller="Account" asp-action="LogOut">
+    <div class="form-group">
+        <input type="submit" value="Log out" class="btn btn-primary mt-4" />
+    </div>
+</form>
